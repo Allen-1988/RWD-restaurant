@@ -1,0 +1,705 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+	
+}
+/*reset end*/
+
+.warp{
+	/*加上max-width、margin會限制螢幕寬度，如果想要全螢幕可以拿掉*/
+    /**/max-width: 1024px;
+    margin: 0 auto;
+    position: relative;
+}
+/*header start*/
+.header{
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.418);      
+    width: 100%;
+    position: absolute;  
+}
+.header h1{
+    width: 120px;
+    height: 24px;
+    margin: 20px;
+}
+.menu {
+    display: flex;
+    align-items: center;
+    margin-right:20px;
+}
+.menu li{
+    padding-right:20px;    
+}
+.menu li a{
+    color: white;
+    text-decoration: none;
+}
+
+/*在PC上隱藏漢堡選單*/
+.menu_bar{
+	display: none;
+}
+@media(max-width:767px){
+	.header{
+		/*position: fixed;header會固定住*/		
+		background: rgb(0, 0, 0);
+	}
+	.menu{
+		width: 100%;
+		/*隱藏選單開始*/
+		max-height: 0px;
+		overflow: hidden;
+		/*隱藏選單結束*/
+		transition:  1.0s;
+		position: absolute;
+		z-index: 10;
+		top: 54px;
+		left: 0;
+		right: 0;
+		flex-direction: column;	
+		
+	}
+	.menu_bar{
+		display: block;
+		color:white;
+		font-size: 30px;
+		padding: 10px 15px 0 0;
+	}
+	.menu li{
+		background: black;		
+		width: 100%;
+	}
+	.menu li a{	
+		font-size: 20px;		
+		display: block;
+		margin: 0px;
+		padding: 10px;
+		text-align: center;
+	}
+	.menu_bar a:hover{
+		color: orange;
+	}
+	.menu-show .menu{ /*要搭配JS的設定*/
+		max-height: 500px;
+	}
+}
+/*header end*/
+
+/*banner*/
+.banner{
+    height: 420px;   
+    background-image: url(https://github.com/Allen-9527/RWD-restaurant/blob/main/images/header_desktop.png?raw=true);
+    background-position-x: 80%;
+    display: flex;/*中間標題h2、p位置設定*/
+    align-items: center; /*中間標題h2、p位置設定*/
+	justify-content: center;/*中間標題h2可以不用在.banner_text中設width參數*/   
+}
+.banner_text{
+    font-size: 36px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.294);
+    text-align: center;
+    padding: 30px 32px;
+    line-height: 1.5em;
+    
+}
+.banner p{
+    font-size: 16px;
+    color: #fff;    
+}
+
+/*container*/
+/*特色介紹start*/
+.feature{    
+    background: #efe9e7; 
+    border: rgba(250, 249, 249, 0) solid 1px;   
+}
+.feature-title{
+	text-align: center;
+}
+.feature-title h2{
+	display: inline-block;
+	font-size: 20px;
+	line-height: 32px;
+	padding: 0 13px;	
+	margin: 45px 0 25px 0;
+}
+.feature-title .line{
+	display: inline-block;
+	border-top: 1px solid black;	
+	width: 20%;
+	margin-bottom: 25px;
+}
+.feature-list{
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 25px ;
+	margin-bottom: 50px;
+}
+.feature-list h3{
+	font-size: 18px;
+	text-align: center;
+	padding: 10px;
+}
+.feature-list a{
+	display: flex;
+	justify-content: center;	
+}
+.feature-list li{
+	width: 22%;
+	line-height: 25px;
+}
+.feature-list li a img{
+	border-radius: 50%;
+}
+
+@media(max-width:767px){
+	.feature-list{
+		flex-direction: column;
+		align-items: center;
+	}
+	.feature-list li {
+		width: 50%;
+		line-height: 25px;
+		padding-bottom: 30px;
+	}
+}	
+/*特色介紹end*/
+
+/*主廚介紹start*/
+.chef{
+	background: #3D1101 ;
+	display: flex;
+}
+.chef img{
+	margin-left: 42px;
+    width: 50%;/*不會產生X軸問題*/
+    object-fit: cover;/*螢幕大小改變時圖不會變形*/
+}
+.chef-info{
+	margin: 80px;
+	color: #fff;
+}
+.chef-info h2{	
+	font-size: 18px;
+}
+.chef-info p {
+	padding-top: 50px;
+	line-height: 20px;
+}
+
+@media(max-width:767px){
+	.chef{
+		flex-direction: column;
+		align-items: center;
+	}
+	.chef img{
+		margin: 0 auto;
+		width: 70%;
+	}
+	
+}
+/*主廚介紹end*/
+
+/*顧客意見start*/
+.feedback{
+	background: #efe9e7;  
+    display: flex;
+    align-items: center;  
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+.feedback h2{
+	font-size: 20px;
+	text-align: center;
+	padding: 35px;
+}
+.feedback ul{
+    display: flex;
+    justify-content: space-evenly;
+}
+.feedback ul li{
+    display: flex;
+    align-items: start;
+    width: 30%;    
+}
+.feedback ul li div{
+    padding-left: 20px;
+}
+.feedback ul li div p{
+    padding: 20px 0 20px 0;
+}
+.feedback ul li div span{
+    padding-left: 60%;
+}
+.feedback-list li img{
+    border-radius: 50%;
+}
+
+@media(max-width:767px){
+	.feedback ul li {
+		display: block;	
+		width: 50%;	
+	}
+	.feedback-list{
+		flex-direction: column;
+		align-items: center;		
+	}
+	.feedback-list li img{
+		width: 30%;
+	}	
+}
+/*顧客意見end*/
+
+/*餐廳位置start*/
+.location{
+	background: #FAFAFA ;	
+	padding-bottom: 5%;
+}
+.location h2{
+	text-align: center;
+	font-size: 20px;
+	padding: 35px;
+}
+.location-info{
+	display: flex;
+	justify-content: space-evenly;
+	padding-top: 30px;
+	width: 100%;
+}
+.location-info form{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 45%;
+}
+.location-info img{/*這邊的設定是為了不要產生X軸*/
+	width: 45%;
+	object-fit: cover;
+}
+.location-info label , .location-info .text{
+	font-size: 18px;
+	line-height: 1.5em;	
+}
+.food{
+	margin-top: 10px;
+}
+.reservation-button{
+	display: flex;
+	justify-content: flex-end;	
+}
+.reservation-button button{
+	margin-left: 20px;
+	font-size: 18px;
+	color: #fff;
+	padding: 9px 20px;
+	border: none;
+	border-radius: 10%;
+}
+.reservation-button .cancel-btn{
+	background: #a09e9e;
+}
+.reservation-button .submit-btn{
+	background: #f56e23;
+}
+
+@media(max-width:767px){
+	.location-info{
+		display: block;		
+	}
+	.location-info img{		
+		width: 90%;
+		padding-left:5%;
+	}
+	.location-info form{
+		width: 75%;
+		padding: 0 0 10px 50px;
+	}
+}
+/*餐廳位置end*/
+
+/*footer start*/
+.footer{
+	background: #efe9e7;
+	display: flex;
+	justify-content: space-around;
+	color: #3D1101;
+	line-height: 1.3em;
+	padding: 40px;
+}
+.footer-about,.footer-info{
+	width: 30%;
+}
+.footer-about h3 ,.footer-info h3{
+	font-size: 26px;
+	padding-bottom: 40px;
+}
+.footer .footer-info ul li{
+	list-style: outside;
+}
+.footer-logo ul{
+	display: flex;
+	justify-content: flex-end;
+}
+.footer-logo ul li{
+	padding: 10px 10px 0 0;
+}
+.footer-logo ul li a{
+	font-size: 31px;
+}
+.fa-google-plus-square{
+	color: #DB4437;
+}
+.fa-twitter-square{
+	color: rgb(13, 185, 253);
+}
+.fa-facebook-square{
+	color: blue;
+}
+
+@media(max-width:767px){
+	.footer{
+		display: block;
+		flex-direction: column;		
+		text-align:center ;
+	}
+	.footer-about,.footer-info,.footer-logo{
+		padding-bottom: 10%;
+
+	}
+	.footer-about{
+		padding-left: 10%;
+		width: 80%;
+	}
+	.footer-info{
+		padding-left: 35%;
+	}
+}
+/*footer end*/
+
+/*login start*/
+.login{
+	background: #efe9e7;
+	text-align: center;
+	color: #3D1101;
+	padding: 25px 0 15px 0;
+}
+.login h2{
+	font-size: 35px;
+	font-weight:bolder;
+	line-height: 1em;
+}
+.login p{
+	font-size: 16px;
+}
+.login form{
+	border-top: #f56e23 solid 2px;
+	background: #efe9e7;	
+	box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.16);
+	max-width: 30%;	
+	margin: 0 auto;
+	padding: 15px;		
+}
+.logintitle{
+	padding-bottom: 10px;
+}
+.login-group{
+	max-width: 70%;
+	text-align: left;
+	padding-bottom: 20px;
+	position: relative;
+	display: inline-block;
+}
+.login-group i{
+	position: absolute;
+	bottom: 27px;
+	left: 4px;
+}
+.login-group input{
+	max-width: 80%;
+	padding: 6px 27px;    
+}
+.login_text{
+	width: 100%;
+}
+.forget-pwd{
+	text-align: left;
+	padding: 0 0 18px 60px;
+}
+.forget-pwd a{
+	text-decoration: none;
+	color:#f56e23 ;
+}
+.forget-pwd a:hover{
+	color: brown;
+}
+.login-btn button{
+	font-size: 15px;
+	margin: 15px;
+	padding: 8px 40px 8px 40px;
+	border: none;	
+	border-radius: 3px;
+}
+.add-btn{
+	color: white;
+	background: rgb(151, 149, 149);
+}
+.add-btn:hover{
+	background: rgb(209, 204, 204);
+}
+.submit-btn{
+	color: white;
+	background:#f56e23 ;
+}
+.submit-btn:hover{
+	background:#fa8f56 ;
+}
+@media(max-width:767px){
+	.login form{
+		max-width: 70%;
+	}
+	.login-btn button{
+		padding: 8px 25px 8px 25px;
+	}
+}
+/*login end*/
+
+/*order start*/
+.order{
+	background: #efe9e7;	
+	padding: 35px 0 15px 0;	
+	display: flex;
+}
+.order-list h2{
+	color: #3D1101;
+	font-weight: 600;
+	padding-bottom: 3%;	
+}
+.order-list{
+	margin-left: 10%;
+}
+.order-list i{
+	font-size: 25px;
+	padding-right: 8px;	
+}
+.menu-list ul li{
+	max-width: 100%;	
+	
+}
+.menu-list ul li a{
+	display: block;
+	text-decoration: none;
+	color: #3D1101;
+	padding:12px 0 10px 0;
+	border-bottom: solid 1px black;
+}
+.menu-list ul li a:hover{
+	color: #fff;
+	background: #3D1101;
+}
+.allitems{	
+	margin-left: 15px;
+	width: 60%;	
+	
+}
+.search{
+	width: 100%;	
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 28px;
+}
+.searchitem{
+	display: flex;
+	height: 35px;
+	
+}
+.searchitem input{
+	width: 300px;
+	border: #3D1101 2px solid;
+	padding: 5px;
+}
+.searchitem a {
+	font-size: 20px;
+	color: #fff;
+	background: #3D1101;
+	padding: 5px 6px;
+}
+.searchcart a{
+	font-size: 20px;
+	text-decoration: none;	
+	color:#3D1101;
+}
+.checkCartTxt{
+	border-right: 1px solid gray;
+	padding-right: 20px;
+}
+.checkCartTxt:hover{
+	color: #9e2e05;
+}
+.checkCartBtn{
+	padding-left: 20px;
+}
+.checkCartBtn:hover{
+	color: #9e2e05;
+}
+.menu-img {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.menu-img li{
+	width: 31%;
+	text-align: center;
+	color: #3D1101;
+	box-shadow: #a09e9e 5px 5px 7px ;
+	padding-bottom: 2px;
+	margin-bottom: 30px;
+	position: relative;/*會和熱銷美食緞帶的位置有關*/
+}
+.menu-img li i{
+	position: absolute;
+	color: #fff;
+	font-size: 23px;
+	top: 9px;
+	left: 9px;
+}
+
+.menu-img li h4{	
+	margin-top: 20px;
+}
+.menu-img li p{
+	font-size: 9px;
+	padding-bottom: 13px;
+	border-bottom: #3D1101 3px solid;
+	margin-bottom: 13px;
+}
+.addCartBtn{	
+	margin: 8px 5px 5px 5px;	
+}
+.addCartBtn a{
+	border: #ec4b10 1px solid;
+	padding: 8px 35px 8px 35px;
+	text-decoration: none;
+	color: #3D1101;
+	border-radius: 2px;
+}
+.addCartBtn a:hover{
+	color: #fff;
+	background:#ec4b10 ;
+}
+/*熱銷美食緞帶*/
+.ribbon-wrap{
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	position: absolute;	
+	overflow: hidden;
+	top: -2px;
+	right: -2px;
+}
+.ribbon{
+	width: 120px;
+	color: #fff;
+	background: #00cc99;
+	font-size: 14px;
+	transform: rotate(-315deg);
+	margin: 12px 0 0 12px;
+	padding: 10px 0 5px 0;	
+}
+
+@media(max-width:767px){
+	.order{
+		display: block;
+	}
+	.order-list{
+		margin-bottom: 30px;
+	}
+	.order-list h2{
+		padding-left: 20%;
+	}
+	.menu-list ul li{
+		max-width: 80%;	
+	}
+	.allitems{
+		margin: 0 auto;	
+		max-width: 100%;	
+	}
+	.search{
+		display: block;
+		margin: 0 auto;	
+		text-align: center;	
+	}
+	.searchitem{
+		margin-bottom: 10px;
+	}
+	.menu-img {		
+		margin-top: 35px;	
+		display: block;
+		flex-direction: column;	
+	}
+	.menu-img  li{
+		width: 100%;
+	}
+}
+/*order end*/
+
+
+/*參考*/
+/*https://shiuanping.github.io/rwd_hexschool_restaurant/*/
+/*https://zz22558822.github.io/0813-RWD/*/
+/*https://joyun25.github.io/hex-restaurant/*/
+/*https://jero0729.github.io/hexschool-html-css-jquery-rwd/*/
+
+/*https://pepe1113.github.io/hexschool-rwd-finalwork/login.html
+https://github.com/pepe1113/hexschool-rwd-finalwork*/
